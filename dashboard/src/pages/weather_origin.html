@@ -1,0 +1,125 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>weather API parsing test</title>
+    <link rel="stylesheet" href="./css/weather.css" />
+  </head>
+  <body>
+    <section class="container">
+      <div class="currFcst-con">
+        <div class="left">
+          <h4><span class="baseDatee" id="baseDate"></span></h4>
+          <h1><span id="currTmp"></span>도</h1>
+        </div>
+        <div class="right">
+          <div id="currSkyDangi" style="border: 1px solid blue"></div>
+          <div id="currRainChk">
+            <h4 id="rainPercent"></h4>
+            <h4 id="rainPty" style="border: 1px solid red"></h4>
+            <h4 class="rainHour"><span id="rainPcp"></span></h4>
+          </div>
+        </div>
+      </div>
+
+      <div class="otherFcst-con">
+        <div class="wrap humidity">습도: <span id="new_reh"></span>%</div>
+        <div class="wrap windy">풍속: <span id="new_wsd"></span>m/s</div>
+        <!--  <div class="wrap rain">강수형태: <span id="new_pty"></span>%</div>-->
+        <div class="wrap snow" id="currSno"><span id="snoVal"></span> cm</div>
+      </div>
+    </section>
+
+    <div id="next">
+      <span id="nextday"></span>
+      다음 날 최저기온:
+      <span id="nextLowTemp"> </span>
+
+      <h5 id="nextHighTemp"></h5>
+    </div>
+
+    <section>
+      <h4>
+        <span id="next_baseDate"> </span>
+      </h4>
+    </section>
+    <hr />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <button id="find-me">위치위치위치</button><br />
+    <p id="status"></p>
+    <h3 id="locationVal"></h3>
+    <h2>
+      현재 여기이ㅣㅅ음
+      <span id="currLocal" style="color: red"> </span>
+    </h2>
+
+    <div style="text-align: center; font-size: 1em">
+      <h1 id="weather">api test</h1>
+      <h3 id="testt"></h3>
+      <p id="par">
+        <span> 날짜는 이렇다 : </span>
+        <span class="baseDatee" id="baseDate"></span>
+      </p>
+
+      <p>지금 온도는 <span id="currTmp"></span>도란다</p>
+      <p>지금 습도는 <span id="currREH"></span>%란다</p>
+      <p>최저온도는 <span id="currTmn"></span>도란다</p>
+      <p>최go온도는 <span id="currTmx"></span>도란다</p>
+      <p>pungsok은 <span id="currWsd"></span>m/s란다</p>
+      <p>강수확률은 <span id="currPop"></span>mm란다</p>
+
+      <div style="border: 1px solid orange">
+        <h1>날씨췤</h1>
+        <p>
+          chk sky
+          <span id="currSky" style="border: 1px solid blue"></span>ㅇㅇㅇㅇ
+        </p>
+      </div>
+
+      <div style="border: 1px solid orange; margin-top: 60px">
+        <h1>오</h1>
+        <p>
+          chk sky
+          <span id="currSky" style="border: 1px solid blue"></span>ㅇㅇㅇㅇ
+        </p>
+      </div>
+    </div>
+
+    <script src="js/weatherFunc.js"></script>
+
+    <!-- 새로 발급받은 키 : HDxvF%2Bq4PsIMtuZBoqLHonXDQ0AG1YZjdrPoUeqeC922ITebwGCeM9cPfgC%2Bpz%2BsbUUtt1H5RLcOYuo3zoS6Jg%3D%3D -->
+
+    <!---
+
+?serviceKey=gY9n9MDVRnoNDC9M5x7yGi1H%2BFcXsIZHMjujZq8xcF8zPZ0rRcPaJs30s95zdJXv8t948B9xYywx1N7y0Wu4zg%3D%3D&numOfRows=10&pageNo=1&dataType=JSON&base_date=20210628&base_time=0630&nx=60&ny=128";
+
+http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0
+http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst?serviceKey=gY9n9MDVRnoNDC9M5x7yGi1H%2BFcXsIZHMjujZq8xcF8zPZ0rRcPaJs30s95zdJXv8t948B9xYywx1N7y0Wu4zg%3D%3D&numOfRows=10&pageNo=1&dataType=JSON&base_date=20210628&base_time=0630&nx=60&ny=128";
+
+
+http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtNcst
+?serviceKey=gY9n9MDVRnoNDC9M5x7yGi1H%2BFcXsIZHMjujZq8xcF8zPZ0rRcPaJs30s95zdJXv8t948B9xYywx1N7y0Wu4zg%3D%3D
+&numOfRows=10&pageNo=1
+&base_date=20210628&base_time=0600&nx=55&ny=127
+
+-->
+  </body>
+</html>
