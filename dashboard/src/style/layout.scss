@@ -1,0 +1,25 @@
+section {
+  &.wrap {
+    border: 2px solid;
+    width: 100%;
+    max-width: 192rem;
+    padding: 0 3rem;
+    margin: 0 auto;
+    min-height: 100%;
+  }
+
+  &.widget-container {
+    border: 1px solid;
+    &.small {
+      width: 33.3%;
+    }
+
+    &.half {
+      width: 50%;
+    }
+
+    &.wide {
+      width: 100%;
+    }
+  }
+}
