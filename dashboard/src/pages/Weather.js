@@ -27,8 +27,16 @@ const Weather = () => {
     fetchData();
   }, []);
 
+  const fullTime = new Date();
+  const year = fullTime.getFullYear();
+  let month = fullTime.getMonth() + 1;
+  month = month >= 10 ? month : "0" + month;
+  let day = fullTime.getDate();
+  day = day >= 10 ? day : "0" + day;
+
   return (
     <>
+      {year} {month} {day}
       {data &&
         data.map((item, key) => (
           <section className="widget-container half" key={key}>
