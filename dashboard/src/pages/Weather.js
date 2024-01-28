@@ -5,61 +5,19 @@ import {
   WidgetLayoutWide,
 } from "../layout/WidgetLayoutSmall";
 
-function Weather({ weather }) {
-  {
-    /*
-  let test = [
-    {
-      a: "aaaaaa",
-      b: "bbbbb",
-    },
-  ];
-  const user = [...test];
-*/
-  }
-  function Tt() {
-    const [apiCallMade, setApiCallMade] = useState(false);
+const keyy = {
+  apiKey: process.env.REACT_APP_WEATHER_KEY,
+};
 
-    useEffect(() => {
-      const keykey = "0i8Fy15BARMLJK8SZMsVviAOdMQjcCoY";
-      const url = `http://dataservice.accuweather.com/forecasts/v1/daily/1day/226081?apikey=0i8Fy15BARMLJK8SZMsVviAOdMQjcCoY`;
-      console.log(url);
-      if (!apiCallMade) {
-        fetch(url).then((response) => {
-          if (response.ok) {
-            setApiCallMade(true);
-            // Handle the successful response
-            console.log("y)");
-            const dd = response.json();
-            dd.map((i, index) => {
-              return (
-                <>
-                  <p>{index}</p>
-                </>
-              );
-            });
-          }
-        });
-      }
-    }, [apiCallMade]);
-  }
+const url = `http://dataservice.accuweather.com/currentconditions/v1/226081?apikey=${process.env.REACT_APP_WEATHER_KEY}&language=ko-kr`;
+const test = JSON.stringify(url);
 
-  Tt();
-  return (
-    <>
-      {" "}
-      <div id="status"></div>
-      <div id="locationVal">{}</div>
-      {/*  
-      true
-            <p>{user[0].b}</p>
-      <p>{user[0].a}</p>
+fetch(url)
+  .then((response) => response.json())
+  .then((data) => console.log(data));
+console.log(test);
 
-      false
-      <p>{user.b}</p>
-      <p>{user.a}</p>*/}
-    </>
-  );
-}
-
+const Weather = () => {
+  return <></>;
+};
 export default Weather;
