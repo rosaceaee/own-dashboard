@@ -25,8 +25,9 @@ const Layout = () => {
 
   return (
     <>
+      {" "}
+      <User user={user} />
       <section className="wrap">
-        <User user={user} />
         <Weather />
         <TodoLayout />
       </section>

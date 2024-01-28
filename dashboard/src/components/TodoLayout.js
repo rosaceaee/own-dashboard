@@ -4,12 +4,12 @@ import { WidgetLayoutSmall } from "../layout/WidgetLayoutSmall";
 export const TodoLayout = () => {
   return (
     <>
-      <section className="wrapper">
-        <section className="widget-container small">
+      <section className="wrapper widget-container half">
+        <section className="widget-container half todo">
           <TodoList />
         </section>
 
-        <section className="widget-container small">
+        <section className="widget-container half todo">
           <TodoList />
         </section>
       </section>

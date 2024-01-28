@@ -29,17 +29,15 @@ const Weather = () => {
 
   return (
     <>
-      {data && (
-          {data.map((item, key) => (
-            <div className="widget-container small" key={key}>
-              <p>Weather Text: {item.WeatherText}</p>
-              {item.Temperature && item.Temperature.Metric && (
-                <p>온도: {item.Temperature.Metric.Value} °C</p>
-              )}
-            </div>
-          ))}
-        </>
-      )}
+      {data &&
+        data.map((item, key) => (
+          <section className="widget-container half" key={key}>
+            <p>Weather Text: {item.WeatherText}</p>
+            {item.Temperature && item.Temperature.Metric && (
+              <p>온도: {item.Temperature.Metric.Value} °C</p>
+            )}
+          </section>
+        ))}
     </>
   );
 };
