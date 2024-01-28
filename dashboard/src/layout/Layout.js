@@ -13,6 +13,7 @@ import {
   WidgetLayoutWide,
 } from "./WidgetLayoutSmall";
 import Weather from "../pages/Weather";
+import { TodoLayout } from "../components/TodoLayout";
 const Layout = () => {
   let test = [
     {
@@ -26,7 +27,8 @@ const Layout = () => {
     <>
       <section className="wrap">
         <User user={user} />
-        <WidgetLayoutSmall weather={<Weather />} />
+        <Weather />
+        <TodoLayout />
       </section>
     </>
   );

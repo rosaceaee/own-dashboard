@@ -2,11 +2,11 @@ import React from "react";
 import Weather from "../pages/Weather";
 
 export const WidgetLayoutSmall = ({ weather }) => {
+  function elel({ wea, toto }) {}
   return (
     <>
       <section className="widget-container small">
         {/* Pass the weather variable to the Weather component */}
-        <Weather weather={weather} />
       </section>
     </>
   );

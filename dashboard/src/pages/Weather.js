@@ -8,32 +8,38 @@ import {
 const keyy = {
   apiKey: process.env.REACT_APP_WEATHER_KEY,
 };
+const url = `http://dataservice.accuweather.com/currentconditions/v1/226081?apikey=${keyy.apiKey}&language=ko-kr`;
 
-const url = `http://dataservice.accuweather.com/currentconditions/v1/226081?apikey=${process.env.REACT_APP_WEATHER_KEY}&language=ko-kr`;
-const test = JSON.stringify(url);
+const Weather = () => {
+  const [data, setData] = useState(null);
 
-fetch(url)
-  .then((response) => response.json())
-  .then((data) => {
-    console.log(data);
-    const Asdf = ({ temper }) => {
-      return (
-        <>
-          <WidgetLayoutSmall>
-            <p>기온:{data[0].WeatherText}</p>
-          </WidgetLayoutSmall>
-          ;
-        </>
-      );
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(url);
+        const jsonData = await response.json();
+        setData(jsonData);
+      } catch (error) {
+        console.error("에러 ㄹㅈㄷ", error);
+      }
     };
-  });
 
-console.log(test);
+    fetchData();
+  }, []);
 
-const Weather = ({ temper }) => {
   return (
     <>
-      <Asdf temper={temper} />
+      {data && (
+          {data.map((item, key) => (
+            <div className="widget-container small" key={key}>
+              <p>Weather Text: {item.WeatherText}</p>
+              {item.Temperature && item.Temperature.Metric && (
+                <p>온도: {item.Temperature.Metric.Value} °C</p>
+              )}
+            </div>
+          ))}
+        </>
+      )}
     </>
   );
 };
