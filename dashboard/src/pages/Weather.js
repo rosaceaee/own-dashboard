@@ -14,10 +14,27 @@ const test = JSON.stringify(url);
 
 fetch(url)
   .then((response) => response.json())
-  .then((data) => console.log(data));
+  .then((data) => {
+    console.log(data);
+    const Asdf = ({ temper }) => {
+      return (
+        <>
+          <WidgetLayoutSmall>
+            <p>기온:{data[0].WeatherText}</p>
+          </WidgetLayoutSmall>
+          ;
+        </>
+      );
+    };
+  });
+
 console.log(test);
 
-const Weather = () => {
-  return <></>;
+const Weather = ({ temper }) => {
+  return (
+    <>
+      <Asdf temper={temper} />
+    </>
+  );
 };
 export default Weather;
