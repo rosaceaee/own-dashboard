@@ -24,12 +24,13 @@ export const TodoList = () => {
 
   const onCheckedElement = (checked, item) => {
     if (checked) {
-      setAddList([...addList, item]);
-    } else if (!checked) {
-      setAddList(addList.filter((el) => el !== item));
+      // If checked, remove the item from addList
+      setAddList((prevList) => prevList.filter((el) => el !== item));
+    } else {
+      // If unchecked, add the item to addList
+      setAddList((prevList) => [...prevList, item]);
     }
   };
-
   const handleCheckboxChange = (index) => {
     const newList = addList.map((item, i) =>
       i === index ? { ...item, completed: !item.completed } : item
@@ -37,42 +38,34 @@ export const TodoList = () => {
     setAddList(newList);
   };
 
-  const removeit = (index) => {
-    const newList = addList.filter((item, i) => i !== index);
-    console.log(newList);
-    setAddList(newList);
+  const onRemove = (item) => {
+    setAddList(addList.filter((el) => el !== item));
   };
-
   return (
     <>
       <h1>zz</h1>
       {/*<h1 onChange={onChange} />*/}
       <div>
         <ul>
-          {addList.map((item, key) => {
-            return (
-              <li key={key}>
-                <input
-                  type="checkbox"
-                  value={item}
-                  id={item}
-                  onChange={(e) => {
-                    onCheckedElement(e.target.checked, e.target.value);
-                  }}
-                  checked={addList.includes(item) ? true : false}
-                />{" "}
-                <label for={item}>{item}</label>
-                <button
-                  onClick={() => {
-                    removeit();
-                  }}
-                >
-                  {" "}
-                  다했슈{" "}
-                </button>
-              </li>
-            );
-          })}
+          {addList.map((item, index) => (
+            <li key={index}>
+              <input
+                type="checkbox"
+                value={item}
+                id={`checkbox-${index}`}
+                onChange={(e) => onCheckedElement(e.target.checked, item)}
+                checked={addList.includes(item)}
+              />
+              <label htmlFor={`checkbox-${index}`}>{item}</label>
+              <button
+                onClick={() => {
+                  onRemove(item);
+                }}
+              >
+                다했슈
+              </button>
+            </li>
+          ))}
         </ul>
       </div>
       <form onSubmit={onSubmit}>
