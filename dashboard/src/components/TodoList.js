@@ -12,51 +12,40 @@ export const TodoList = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    if (addList === "") {
+    if (list.trim() === "") {
       return;
     }
-    console.log(addList);
-    setAddList((zz) => [list, ...zz]);
-    // setAddList((zz) => [{ task: list, completed: false }, ...zz]);
 
+    setAddList((prevList) => [...prevList, { task: list, completed: false }]);
     setList("");
   };
 
   const onCheckedElement = (checked, item) => {
-    if (checked) {
-      // If checked, remove the item from addList
-      setAddList((prevList) => prevList.filter((el) => el !== item));
-    } else {
-      // If unchecked, add the item to addList
-      setAddList((prevList) => [...prevList, item]);
-    }
-  };
-  const handleCheckboxChange = (index) => {
-    const newList = addList.map((item, i) =>
-      i === index ? { ...item, completed: !item.completed } : item
+    setAddList((prevList) =>
+      prevList.map((el) =>
+        el.task === item.task ? { ...el, completed: checked } : el
+      )
     );
-    setAddList(newList);
   };
 
   const onRemove = (item) => {
-    setAddList(addList.filter((el) => el !== item));
+    setAddList((prevList) => prevList.filter((el) => el.task !== item.task));
   };
+
   return (
     <>
-      <h1>zz</h1>
-      {/*<h1 onChange={onChange} />*/}
+      <h1>Todo List</h1>
       <div>
         <ul>
           {addList.map((item, index) => (
-            <li key={index}>
+            <li key={index} className={item.completed ? "completed" : ""}>
               <input
                 type="checkbox"
-                value={item}
                 id={`checkbox-${index}`}
                 onChange={(e) => onCheckedElement(e.target.checked, item)}
-                checked={addList.includes(item)}
+                checked={item.completed}
               />
-              <label htmlFor={`checkbox-${index}`}>{item}</label>
+              <label htmlFor={`checkbox-${index}`}>{item.task}</label>
               <button
                 onClick={() => {
                   onRemove(item);
@@ -69,7 +58,12 @@ export const TodoList = () => {
         </ul>
       </div>
       <form onSubmit={onSubmit}>
-        <input type="text" placeholder="input" onChange={onChange} />
+        <input
+          type="text"
+          placeholder="input"
+          value={list}
+          onChange={onChange}
+        />
         <button type="submit">추가쓰</button>
       </form>
     </>
