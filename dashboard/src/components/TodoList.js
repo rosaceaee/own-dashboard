@@ -10,12 +10,10 @@ export const TodoList = () => {
   };
   const onSubmit = (e) => {
     e.preventDefault();
-
     if (addList === "") {
       return;
     }
     console.log(addList);
-
     setAddList((zz) => [list, ...zz]);
     setList("");
   };
@@ -27,7 +25,13 @@ export const TodoList = () => {
       <div>
         <ul>
           {addList.map((item, key) => {
-            return <li key={key}>{item}</li>;
+            return (
+              <li key={key}>
+                <input type="checkbox" value={item} id={item} />{" "}
+                <label for={item}>{item}</label>
+                <button> 다했슈 </button>
+              </li>
+            );
           })}
         </ul>
       </div>
