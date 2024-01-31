@@ -26,15 +26,12 @@ const Layout = () => {
   ];
   const user = [...test];
 
-  const [sing, setSing] = useState(null);
+  const [sing, setSing] = useState([]);
 
-  function add(e) {
-    const obj = <TodoList />;
-
-    setSing(obj);
-    // repoWrap.append(<SingleTodo />);
+  function add() {
+    const newSing = <SingleTodo key={sing.length} />;
+    setSing([...sing, newSing]);
   }
-
   return (
     <>
       {" "}
@@ -58,7 +55,19 @@ const Layout = () => {
                 <SingleTodo />
               </div>
             </section>{" "}
-            {sing}
+            <section className="single mt">
+              <div className="repo-todo">
+                <SingleTodo />
+              </div>
+            </section>{" "}
+            <section className="single mt">
+              <div className="repo-todo">
+                <SingleTodo />
+              </div>
+            </section>{" "}
+            {sing.map((sing, index) => (
+              <section key={index}>{sing}</section>
+            ))}
           </section>
         </article>
       </section>

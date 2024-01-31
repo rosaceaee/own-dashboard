@@ -1,10 +1,40 @@
 .wrapp {
   border: 2px solid;
   grid-area: wrapp;
+  padding: 2rem;
 }
 
 .repo-wrap {
   display: flex;
+  justify-content: center;
+  section.single {
+    width: 30%;
+    .repo-todo {
+      ul {
+        li {
+          background: #333;
+          color: #fff;
+          width: 100%;
+          padding: 1rem 4rem;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+      }
+
+      form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-top: 2px solid;
+        input[type="text"] {
+          padding: 2rem 1rem;
+          width: 100%;
+          font-size: 1.3rem;
+        }
+      }
+    }
+  }
 }
 
 section {
@@ -41,6 +71,7 @@ section {
     display: grid;
     grid-template-rows: auto 3fr 1fr;
     width: 100%;
+    height: 20rem;
 
     ul {
       li {
@@ -61,7 +92,6 @@ section {
       border-top: 2px solid;
       input[type="text"] {
         border: 1px solid;
-        height: calc(90% - 1rem);
       }
     }
   }
@@ -81,7 +111,7 @@ section {
       &.todo {
         grid-area: todo;
 
-        max-height: 20rem;
+        max-height: 40rem;
         font-size: 1.1rem;
 
         .innertodo {
@@ -89,6 +119,7 @@ section {
           display: grid;
           grid-template-rows: auto 3fr 1fr;
           width: 100%;
+          height: 100%;
 
           &.single {
             grid-area: singletodo;

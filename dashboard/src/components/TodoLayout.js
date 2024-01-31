@@ -6,10 +6,13 @@ export const MultiTodo = () => {
     <>
       <section className="wrapper widget-container wide todo">
         <section className="widget-container innertodo">
+          <h2>@Home</h2>
           <TodoList />
         </section>
 
         <section className="widget-container innertodo ">
+          {" "}
+          <h2>@Hobby</h2>
           <TodoList />
         </section>
       </section>
@@ -21,7 +24,7 @@ export const SingleTodo = () => {
   return (
     <>
       {" "}
-      <section className="widget-container innertodo  ">
+      <section className="widget-container innertodo">
         <TodoList />
       </section>
       ;
