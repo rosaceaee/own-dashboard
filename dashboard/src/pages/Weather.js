@@ -38,7 +38,8 @@ const Weather = () => {
   month = month >= 10 ? month : "0" + month;
   let day = fullTime.getDate();
   day = day >= 10 ? day : "0" + day;
-
+  {
+    /*
   const getLocationAPI = async ({ lat, lng }) => {
     return await axios.get(
       `http://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=${keyy.apiKey}&q=${lat}%2C${lng}&language=ko-kr`
@@ -89,18 +90,19 @@ const Weather = () => {
       });
     }
   }, []);
-
+*/
+  }
   return (
     <>
-      <section className="widget-container half weather">
+      <section className="widget-container wide weather">
         <h1>
           {year} {month} {day}
         </h1>
-        <span>{locationData?.localizedName}</span>
+        {/*  <span>{locationData?.localizedName}</span>
         <span>{locationData?.innerCity}</span>
         <p>{weatherData?.temperature}</p>{" "}
         <span>{weatherData?.weatherText}</span>
-        {/* {data &&
+        {data &&
           data.map((item, key) => (
             <section key={key}>
               {item.Temperature && item.Temperature.Metric && (

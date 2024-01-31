@@ -34,7 +34,6 @@ export const TodoList = () => {
 
   return (
     <>
-      <h1>Todo List</h1>
       <div>
         <ul className="todo-container">
           {addList.map((item, index) => (

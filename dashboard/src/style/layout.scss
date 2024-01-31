@@ -1,3 +1,12 @@
+.wrapp {
+  border: 2px solid;
+  grid-area: wrapp;
+}
+
+.repo-wrap {
+  display: flex;
+}
+
 section {
   &.wrap {
     border: 2px solid;
@@ -6,10 +15,56 @@ section {
     padding: 0 3rem;
     margin: 0 auto;
     min-height: 100%;
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+
+    grid-template-areas:
+      "weather  todo todo "
+      "wrapp wrapp wrapp";
   }
 
+  .source {
+    grid-area: source;
+    display: flex;
+    justify-content: center;
+  }
+  .asdf {
+    grid-area: asdf;
+  }
+  .mt {
+    margin-top: 3rem;
+  }
+
+  .innertodo {
+    font-size: 1.1rem;
+    display: grid;
+    grid-template-rows: auto 3fr 1fr;
+    width: 100%;
+
+    ul {
+      li {
+        background: #333;
+        color: #fff;
+        width: 100%;
+        padding: 1rem 4rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+    }
+
+    form {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-top: 2px solid;
+      input[type="text"] {
+        border: 1px solid;
+        height: calc(90% - 1rem);
+      }
+    }
+  }
   &.widget-container {
     border: 1px solid;
     &.small {
@@ -19,13 +74,27 @@ section {
     &.half {
       width: 50%;
       height: 20rem;
+    }
 
-      //todo
+    &.wide {
+      width: 100%; //todo
       &.todo {
+        grid-area: todo;
+
         max-height: 20rem;
         font-size: 1.1rem;
-        display: grid;
-        grid-template-rows: auto 3fr 1fr;
+
+        .innertodo {
+          font-size: 1.1rem;
+          display: grid;
+          grid-template-rows: auto 3fr 1fr;
+          width: 100%;
+
+          &.single {
+            grid-area: singletodo;
+          }
+        }
+
         ul {
           height: 100%;
           max-height: 15rem;
@@ -56,6 +125,7 @@ section {
       }
 
       &.weather {
+        grid-area: weather;
         width: 45%;
         border: 1px solid red;
         display: flex;
@@ -78,10 +148,6 @@ section {
         }
       }
     }
-
-    &.wide {
-      width: 100%;
-    }
   }
 
   &.wrapper {
@@ -89,4 +155,15 @@ section {
     display: flex;
     flex-direction: row;
   }
+}
+
+.innertodo {
+  font-size: 1.1rem;
+  display: grid;
+  grid-template-rows: auto 3fr 1fr;
+  width: 100%;
+}
+
+.sing {
+  grid-area: single;
 }
