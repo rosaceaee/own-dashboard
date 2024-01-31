@@ -36,7 +36,7 @@ export const TodoList = () => {
     <>
       <h1>Todo List</h1>
       <div>
-        <ul>
+        <ul className="todo-container">
           {addList.map((item, index) => (
             <li key={index} className={item.completed ? "completed" : ""}>
               <input
@@ -51,7 +51,7 @@ export const TodoList = () => {
                   onRemove(item);
                 }}
               >
-                다했슈
+                done
               </button>
             </li>
           ))}
@@ -64,7 +64,7 @@ export const TodoList = () => {
           value={list}
           onChange={onChange}
         />
-        <button type="submit">추가쓰</button>
+        <button type="submit">add</button>
       </form>
     </>
   );
