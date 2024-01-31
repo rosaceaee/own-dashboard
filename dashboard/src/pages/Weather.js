@@ -11,7 +11,7 @@ const keyy = {
 //const url = `http://dataservice.accuweather.com/currentconditions/v1/${locationKey[0].key}?apikey=${keyy.apiKey}&language=ko-kr`;
 const local = `http://dataservice.accuweather.com/locations/v1/regions?apikey=${keyy.apiKey}`;
 
-//console.log(local);
+console.log(local);
 const Weather = () => {
   const [data, setData] = useState(null);
   {
@@ -63,7 +63,7 @@ const Weather = () => {
             lng: position.coords.longitude,
           }).then((res) => {
             const resData = res.data.ParentCity;
-            const subCityName = res.data.SupplementalAdminAreas[0];
+            const subCityName = res.data.SupplementalAdminAreas;
             setLocationData({
               key: resData.Key,
               localizedName: resData.LocalizedName,
@@ -80,10 +80,10 @@ const Weather = () => {
     if (locationData !== undefined) {
       getWeatherAPI(locationData.key).then((res) => {
         const resData = res.data[0];
-        console.log(resData);
+
         setWeatherData({
           temperature: resData.Temperature.Metric.Value,
-          // weatherIcon: resData.WeatherIcon,
+          weatherIcon: resData.WeatherIcon,
           weatherText: resData.WeatherText,
         });
       });
