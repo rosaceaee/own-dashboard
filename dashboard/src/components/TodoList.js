@@ -34,28 +34,30 @@ export const TodoList = () => {
 
   return (
     <>
-      <div>
-        <ul className="todo-container">
-          {addList.map((item, index) => (
-            <li key={index} className={item.completed ? "completed" : ""}>
-              <input
-                type="checkbox"
-                id={`checkbox-${index}`}
-                onChange={(e) => onCheckedElement(e.target.checked, item)}
-                checked={item.completed}
-              />
-              <label htmlFor={`checkbox-${index}`}>{item.task}</label>
-              <button
-                onClick={() => {
-                  onRemove(item);
-                }}
-              >
-                done
-              </button>
-            </li>
-          ))}
-        </ul>
-      </div>
+      <ul className="todo-container" style={{ border: "2px solid red" }}>
+        <li>
+          <label> zzz</label>
+          <button value="zz">zz</button>
+        </li>
+        {addList.map((item, index) => (
+          <li key={index} className={item.completed ? "completed" : ""}>
+            <input
+              type="checkbox"
+              id={`checkbox-${index}`}
+              onChange={(e) => onCheckedElement(e.target.checked, item)}
+              checked={item.completed}
+            />
+            <label htmlFor={`checkbox-${index}`}>{item.task}</label>
+            <button
+              onClick={() => {
+                onRemove(item);
+              }}
+            >
+              done
+            </button>
+          </li>
+        ))}
+      </ul>
       <form onSubmit={onSubmit}>
         <input
           type="text"

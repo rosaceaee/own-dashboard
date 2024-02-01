@@ -22,11 +22,19 @@ export const WidgetLayoutHalf = ({}) => {
   );
 };
 
-export const WidgetLayoutWide = ({}) => {
+export const WidgetLayoutWide = (props) => {
   return (
     <>
       <section className="widget-container wide">
-        <h2>WidgetLayoutWide</h2>
+        {Array.isArray(props.children) ? (
+          props.children.map((child, index) => (
+            <div key={index} className="wrap arr">
+              {child}
+            </div>
+          ))
+        ) : (
+          <div className="wrap elem">{props.children}</div>
+        )}
       </section>
     </>
   );

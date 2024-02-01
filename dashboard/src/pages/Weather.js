@@ -94,7 +94,7 @@ const Weather = () => {
   }
   return (
     <>
-      <section className="widget-container wide weather">
+      <section className="container weather">
         <h1>
           {year} {month} {day}
         </h1>

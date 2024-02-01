@@ -36,40 +36,32 @@ const Layout = () => {
     <>
       {" "}
       <User user={user} />
-      <section className="wrap">
-        <Weather />
-        <MultiTodo />
+      <section className="container">
+        <WidgetLayoutWide>
+          <div className="first">
+            <Weather />
+            <MultiTodo />
+          </div>
+        </WidgetLayoutWide>
 
-        <article className="wrapp">
-          <section className="source">
-            <GitHubCalendar
-              username="rosaceaee"
-              year="2024"
-              colorScheme="light"
-            />
-          </section>{" "}
-          <section className="repo-wrap">
-            <h2 onClick={add}>addddd</h2>
-            <section className="single mt">
-              <div className="repo-todo">
-                <SingleTodo />
-              </div>
-            </section>{" "}
-            <section className="single mt">
-              <div className="repo-todo">
-                <SingleTodo />
-              </div>
-            </section>{" "}
-            <section className="single mt">
-              <div className="repo-todo">
-                <SingleTodo />
-              </div>
-            </section>{" "}
-            {sing.map((sing, index) => (
-              <section key={index}>{sing}</section>
-            ))}
+        <WidgetLayoutWide>
+          <section className="second">
+            <section className="source">
+              <GitHubCalendar
+                username="rosaceaee"
+                year="2024"
+                colorScheme="light"
+              />
+            </section>
+            <section className="repo-wrap">
+              <SingleTodo /> <SingleTodo />
+              <SingleTodo />
+              {sing.map((sing, index) => (
+                <section key={index}>{sing}</section>
+              ))}
+            </section>
           </section>
-        </article>
+        </WidgetLayoutWide>
       </section>
     </>
   );

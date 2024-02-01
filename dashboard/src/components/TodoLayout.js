@@ -4,13 +4,13 @@ import { WidgetLayoutSmall } from "../layout/WidgetLayoutSmall";
 export const MultiTodo = () => {
   return (
     <>
-      <section className="wrapper widget-container wide todo">
-        <section className="widget-container innertodo">
+      <section className="todo-wrap multi">
+        <section className="inner">
           <h2>@Home</h2>
           <TodoList />
         </section>
 
-        <section className="widget-container innertodo ">
+        <section className="inner">
           {" "}
           <h2>@Hobby</h2>
           <TodoList />
@@ -24,8 +24,11 @@ export const SingleTodo = () => {
   return (
     <>
       {" "}
-      <section className="widget-container innertodo">
-        <TodoList />
+      <section className="todo-wrap single">
+        {" "}
+        <section className="inner">
+          <TodoList />
+        </section>
       </section>
       ;
     </>

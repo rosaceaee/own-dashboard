@@ -16,7 +16,7 @@ import {
 } from "react-router-dom";
 import logo from "./logo.svg";
 import "./style/base.scss";
-import "./style/layout.scss";
+import "./style/newlayout.scss";
 import User from "./pages/User";
 import Layout from "./layout/Layout";
 
