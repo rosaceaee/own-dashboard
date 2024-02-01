@@ -54,7 +54,7 @@ export const TodoList = ({ todoname }) => {
                 onRemove(item);
               }}
             >
-              done
+              완료
             </button>
           </li>
         ))}
