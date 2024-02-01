@@ -35,11 +35,11 @@ const Layout = () => {
   return (
     <>
       {" "}
-      <User user={user} />
+      <Weather />
       <section className="container">
         <WidgetLayoutWide>
           <div className="first">
-            <Weather />
+            <User user={user} />
             <MultiTodo />
           </div>
         </WidgetLayoutWide>
