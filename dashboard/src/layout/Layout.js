@@ -15,8 +15,9 @@ import {
 } from "./WidgetLayoutSmall";
 import Weather from "../pages/Weather";
 import { MultiTodo, SingleTodo, AddSingleTodo } from "../components/TodoLayout";
+import { TodoContainer } from "../components/TodoContext";
 import { TodoList } from "../components/TodoList";
-import { Grass } from "../pages/Grass";
+
 const Layout = () => {
   let test = [
     {
@@ -41,41 +42,42 @@ const Layout = () => {
   return (
     <>
       {" "}
-      <Weather />
-      <section className="container">
-        <WidgetLayoutWide>
-          <div className="first">
-            <User user={user} />
-            <MultiTodo todoname={todonamee} />
-          </div>
-        </WidgetLayoutWide>
+      <Weather />{" "}
+      <TodoContainer>
+        <section className="container">
+          <WidgetLayoutWide>
+            <div className="first">
+              <User user={user} /> <MultiTodo todoname={todonamee} />
+            </div>
+          </WidgetLayoutWide>
 
-        <WidgetLayoutWide>
-          <h1 className="repo-header">작업 계획</h1>
-          <h2 className="addRepo" onClick={add}>
-            Repo 추가
-          </h2>
-          <section className="second">
-            <section className="source">
-              <GitHubCalendar
-                username="rosaceaee"
-                year="2024"
-                colorScheme="light"
-              />
+          <WidgetLayoutWide>
+            <h1 className="repo-header">작업 계획</h1>
+            <h2 className="addRepo" onClick={add}>
+              Repo 추가
+            </h2>
+            <section className="second">
+              <section className="source">
+                <GitHubCalendar
+                  username="rosaceaee"
+                  year="2024"
+                  colorScheme="light"
+                />
+              </section>
+              <section className="repo-wrap">
+                <SingleTodo todoname={todoname[0]} />
+                <SingleTodo todoname={todoname[1]} />
+                <SingleTodo todoname={todoname[2]} />
+                {sing.map((sing, index) => (
+                  <section className="todo-wrap single" key={index}>
+                    {sing}
+                  </section>
+                ))}
+              </section>
             </section>
-            <section className="repo-wrap">
-              <SingleTodo todoname={todoname[0]} />
-              <SingleTodo todoname={todoname[1]} />
-              <SingleTodo todoname={todoname[2]} />
-              {sing.map((sing, index) => (
-                <section className="todo-wrap single" key={index}>
-                  {sing}
-                </section>
-              ))}
-            </section>
-          </section>
-        </WidgetLayoutWide>
-      </section>
+          </WidgetLayoutWide>
+        </section>{" "}
+      </TodoContainer>
     </>
   );
 };
