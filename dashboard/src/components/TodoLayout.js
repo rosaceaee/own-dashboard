@@ -1,18 +1,21 @@
 import React from "react";
 import { TodoList } from "./TodoList";
 import { WidgetLayoutSmall } from "../layout/WidgetLayoutSmall";
+import { ReactComponent as Home } from "../img/Home.svg";
+import { ReactComponent as Run } from "../img/Run.svg";
+
 export const MultiTodo = () => {
   return (
     <>
       <section className="todo-wrap multi">
         <section className="inner">
-          <h2>@Home</h2>
+          <Home />
           <TodoList />
         </section>
 
         <section className="inner">
           {" "}
-          <h2>@Hobby</h2>
+          <Run />
           <TodoList />
         </section>
       </section>
