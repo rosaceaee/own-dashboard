@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export const TodoList = () => {
+export const TodoList = ({ todoname }) => {
   const [list, setList] = useState("");
   const [addList, setAddList] = useState([]);
   const [line, setLine] = useState(false);
@@ -34,10 +34,9 @@ export const TodoList = () => {
 
   return (
     <>
-      <ul className="todo-container" style={{ border: "2px solid red" }}>
+      <ul className="todo-container">
         <li>
-          <label> zzz</label>
-          <button value="zz">zz</button>
+          <label>{todoname}</label>
         </li>
         {addList.map((item, index) => (
           <li key={index} className={item.completed ? "completed" : ""}>
@@ -47,7 +46,9 @@ export const TodoList = () => {
               onChange={(e) => onCheckedElement(e.target.checked, item)}
               checked={item.completed}
             />
-            <label htmlFor={`checkbox-${index}`}>{item.task}</label>
+            <label htmlFor={`checkbox-${index}`} style={{ textAlign: "left" }}>
+              {item.task}
+            </label>
             <button
               onClick={() => {
                 onRemove(item);
@@ -61,11 +62,11 @@ export const TodoList = () => {
       <form onSubmit={onSubmit}>
         <input
           type="text"
-          placeholder="input"
+          placeholder="할 일 추가하기"
           value={list}
           onChange={onChange}
         />
-        <button type="submit">add</button>
+        <button type="submit">추가</button>
       </form>
     </>
   );

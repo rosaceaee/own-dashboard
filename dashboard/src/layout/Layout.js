@@ -14,7 +14,7 @@ import {
   WidgetLayoutWide,
 } from "./WidgetLayoutSmall";
 import Weather from "../pages/Weather";
-import { MultiTodo, SingleTodo } from "../components/TodoLayout";
+import { MultiTodo, SingleTodo, AddSingleTodo } from "../components/TodoLayout";
 import { TodoList } from "../components/TodoList";
 import { Grass } from "../pages/Grass";
 const Layout = () => {
@@ -29,9 +29,15 @@ const Layout = () => {
   const [sing, setSing] = useState([]);
 
   function add() {
-    const newSing = <SingleTodo key={sing.length} />;
+    const newSing = (
+      <AddSingleTodo todoname={[...todoname]} key={sing.length} />
+    );
     setSing([...sing, newSing]);
   }
+
+  const todoname = ["repo1", "repo2", "repo3"];
+  const todonamee = ["집에서 할 일", "취미"];
+
   return (
     <>
       {" "}
@@ -40,11 +46,15 @@ const Layout = () => {
         <WidgetLayoutWide>
           <div className="first">
             <User user={user} />
-            <MultiTodo />
+            <MultiTodo todoname={todonamee} />
           </div>
         </WidgetLayoutWide>
 
         <WidgetLayoutWide>
+          <h1 className="repo-header">작업 계획</h1>
+          <h2 className="addRepo" onClick={add}>
+            Repo 추가
+          </h2>
           <section className="second">
             <section className="source">
               <GitHubCalendar
@@ -54,10 +64,13 @@ const Layout = () => {
               />
             </section>
             <section className="repo-wrap">
-              <SingleTodo /> <SingleTodo />
-              <SingleTodo />
+              <SingleTodo todoname={todoname[0]} />
+              <SingleTodo todoname={todoname[1]} />
+              <SingleTodo todoname={todoname[2]} />
               {sing.map((sing, index) => (
-                <section key={index}>{sing}</section>
+                <section className="todo-wrap single" key={index}>
+                  {sing}
+                </section>
               ))}
             </section>
           </section>

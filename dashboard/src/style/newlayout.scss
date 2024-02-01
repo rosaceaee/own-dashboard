@@ -1,10 +1,28 @@
 .container {
-  border: 2px solid;
   width: 100%;
   max-width: 192rem;
   padding: 0 6rem;
   margin: 0 auto;
   min-height: 100%;
+
+  .repo-header {
+    font-size: 3rem;
+    width: 100%;
+    text-align: center;
+    padding-top: 2rem;
+  }
+
+  .addRepo {
+    margin-top: 0.5rem;
+    margin-left: auto;
+    margin-right: 1rem;
+    display: block;
+    width: 10rem;
+    text-align: center;
+    border: 1px solid;
+    padding: 1rem;
+    border-radius: 10px;
+  }
 }
 .usr {
   width: 100%;
@@ -32,6 +50,7 @@
         outline: none;
         border: none;
         margin: 0 1rem;
+        cursor: pointer;
         &:nth-child(1) {
           background: green;
         }
@@ -47,14 +66,20 @@
 }
 
 .weather {
-  height: 8rem;
+  height: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  flex-direction: column;
 }
+
 .widget-container {
   &.wide {
     width: 100%;
     max-width: 192rem;
     margin-bottom: 2rem;
-    border: 1px solid magenta;
+    border: 1px solid grey;
+    padding: 1rem;
     .first {
       display: grid;
       grid-template-columns: 1fr 2fr;
@@ -64,8 +89,6 @@
 
       .weather {
         width: 40%;
-
-        border: 2px solid;
       }
     }
 
@@ -82,8 +105,9 @@
       .repo-wrap {
         display: flex;
         flex-direction: row;
-        justify-content: space-around;
+        justify-content: flex-start;
         padding: 0 3rem;
+        flex-wrap: wrap;
       }
     }
   }
@@ -95,7 +119,6 @@
 
       .inner {
         width: 90%;
-        margin: 0 1rem;
         border-radius: 1rem;
 
         &:nth-child(1) {
@@ -109,10 +132,16 @@
 
     &.single {
       width: 33%;
+      margin: 1rem 0;
       .inner {
-        border-radius: 1rem;
         background: skyblue;
       }
+    }
+
+    .inner {
+      margin: 0 1rem;
+
+      border-radius: 1rem;
     }
 
     svg {
@@ -129,15 +158,30 @@
     overflow-y: auto;
     padding: 0 1rem;
     li {
-      background: #333;
-      color: #fff;
-      width: 100%;
+      color: #333;
+      width: calc(100% - 3rem);
       padding: 1rem 4rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      margin: 0.5rem auto;
+      background: #fff;
+      border-radius: 10px;
+
+      &:nth-child(1) {
+        width: 100%;
+
+        padding: 1rem 3rem;
+        font-weight: 600;
+        background: #333;
+        color: #fff;
+      }
+
       label {
-        font-size: 1.2rem;
+        font-size: 1.4rem;
+        width: 100%;
+        text-align: left;
+        padding-left: 1rem;
       }
     }
   }
@@ -145,10 +189,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border-top: 2px solid;
     padding: 1rem 3rem;
     input[type="text"] {
-      border: 1px solid;
       width: 100%;
       height: 100%;
       padding: 1rem;
@@ -156,6 +198,11 @@
     button {
       padding: 1rem 2rem;
       width: 6vw;
+      background: #333;
+      color: #fff;
+      border: none;
+      font-weight: 600;
+      cursor: pointer;
     }
   }
 }

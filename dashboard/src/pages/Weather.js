@@ -96,8 +96,9 @@ const Weather = () => {
     <>
       <section className="container weather">
         <h1>
-          {year} {month} {day}
+          오늘은 {year}년 {month}월 {day}일
         </h1>
+        <h1>맑음. 현재 온도 2 °C</h1>
         {/*  <span>{locationData?.localizedName}</span>
         <span>{locationData?.innerCity}</span>
         <p>{weatherData?.temperature}</p>{" "}
