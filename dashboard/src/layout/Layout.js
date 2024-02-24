@@ -28,16 +28,24 @@ const Layout = () => {
   const user = [...test];
 
   const [sing, setSing] = useState([]);
+  const [newRepo, setNewRepo] = useState("");
 
-  function add() {
+  const onChange = (e) => {
+    setNewRepo(e.target.value);
+  };
+
+  const Add = () => {
     const newSing = (
-      <AddSingleTodo todoname={[...todoname]} key={sing.length} />
+      <AddSingleTodo todoname={[todoname, ...newRepo]} key={sing.length} />
     );
     setSing([...sing, newSing]);
-  }
+  };
 
-  const todoname = ["repo1", "repo2", "repo3"];
+  const todoname = [];
   const todonamee = ["집에서 할 일", "취미"];
+
+  const [set, setSet] = useState(false);
+  const Show = () => setSet((sset) => !sset);
 
   return (
     <>
@@ -53,7 +61,7 @@ const Layout = () => {
 
           <WidgetLayoutWide>
             <h1 className="repo-header">작업 계획</h1>
-            <h2 className="addRepo" onClick={add}>
+            <h2 className="addRepo" onClick={Show}>
               Repo 추가
             </h2>
             <section className="second">
@@ -65,14 +73,32 @@ const Layout = () => {
                 />
               </section>
               <section className="repo-wrap">
-                <SingleTodo todoname={todoname[0]} />
-                <SingleTodo todoname={todoname[1]} />
-                <SingleTodo todoname={todoname[2]} />
+                {/* {sing.map((sing, index) => (
+                  <section className="todo-wrap single" key={index}>
+                    {sing}
+                  </section>
+                ))}*/}
+
                 {sing.map((sing, index) => (
                   <section className="todo-wrap single" key={index}>
                     {sing}
                   </section>
                 ))}
+                {set && (
+                  <>
+                    <div>
+                      <input
+                        type="text"
+                        placeholder="dd"
+                        onChange={onChange}
+                        value={newRepo}
+                      ></input>
+                      <button type="submit" onClick={Add}>
+                        add
+                      </button>
+                    </div>
+                  </>
+                )}
               </section>
             </section>
           </WidgetLayoutWide>

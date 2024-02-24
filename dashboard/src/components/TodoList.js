@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from "react";
+// TodoList.js
 import { useTodoContext } from "./TodoContext";
+import { useEffect, useState } from "react";
 
 export const TodoList = ({ todoname }) => {
   const [list, setList] = useState("");
   const [addList, setAddList] = useState([]);
-  const [line, setLine] = useState(false);
-  // const [todoData, setTodoData] = useState(addList);
   const { todoData, setTodoData } = useTodoContext();
+  const localStorageKey = `todoData-${todoname}`;
+
   const onChange = (e) => {
     const ee = e.target.value;
     setList(ee);
@@ -18,39 +19,43 @@ export const TodoList = ({ todoname }) => {
       return;
     }
 
-    setAddList((prevList) => [...prevList, { task: list, completed: false }]);
+    const newTask = { task: list, completed: false };
+    const storedData = JSON.parse(localStorage.getItem(localStorageKey)) || [];
+    const updatedData = [...storedData, newTask];
+
+    localStorage.setItem(localStorageKey, JSON.stringify(updatedData));
+    setAddList(updatedData);
     setList("");
   };
 
   const onCheckedElement = (checked, item) => {
-    setAddList((prevList) =>
-      prevList.map((el) =>
-        el.task === item.task ? { ...el, completed: checked } : el
-      )
-    );
+    const storedData = JSON.parse(localStorage.getItem(localStorageKey)) || [];
+    const updatedData = storedData.filter((el) => el.task !== item.task);
+    localStorage.setItem(localStorageKey, JSON.stringify(updatedData));
+
+    // 화면에서 체크박스를 사라지게 하기 위해 상태 업데이트
+    setAddList((prevList) => prevList.filter((el) => el.task !== item.task));
   };
 
   const onRemove = (item) => {
+    const storedData = JSON.parse(localStorage.getItem(localStorageKey)) || [];
+    const updatedData = storedData.filter((el) => el.task !== item.task);
+    localStorage.setItem(localStorageKey, JSON.stringify(updatedData));
+
     setAddList((prevList) => prevList.filter((el) => el.task !== item.task));
   };
 
   useEffect(() => {
-    const storedData = JSON.parse(localStorage.getItem("todoData"));
-    console.log("Stored Data:", storedData);
+    const storedData = JSON.parse(localStorage.getItem(localStorageKey));
     if (storedData) {
       setAddList(storedData);
     }
-  }, []);
+  }, [localStorageKey]);
 
   useEffect(() => {
     setTodoData(addList);
   }, [addList, setTodoData]);
 
-  useEffect(() => {
-    if (todoData.length > 0) {
-      localStorage.setItem("todoData", JSON.stringify(todoData));
-    }
-  }, [todoData]);
   return (
     <>
       <ul className="todo-container">
