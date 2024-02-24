@@ -1,4 +1,3 @@
-// TodoList.js
 import { useTodoContext } from "./TodoContext";
 import { useEffect, useState } from "react";
 
@@ -21,6 +20,7 @@ export const TodoList = ({ todoname }) => {
 
     const newTask = { task: list, completed: false };
     const storedData = JSON.parse(localStorage.getItem(localStorageKey)) || [];
+    console.log(localStorageKey);
     const updatedData = [...storedData, newTask];
 
     localStorage.setItem(localStorageKey, JSON.stringify(updatedData));

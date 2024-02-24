@@ -36,7 +36,8 @@ const Layout = () => {
 
   const Add = () => {
     const newSing = (
-      <AddSingleTodo todoname={[todoname, ...newRepo]} key={sing.length} />
+      //  <AddSingleTodo todoname={[todoname, ...newRepo]} key={sing.length} />
+      <AddSingleTodo todoname={newRepo} key={sing.length} />
     );
     setSing([...sing, newSing]);
   };
@@ -59,11 +60,26 @@ const Layout = () => {
             </div>
           </WidgetLayoutWide>
 
-          <WidgetLayoutWide>
+          <WidgetLayoutWide style={{ position: "relative" }}>
             <h1 className="repo-header">작업 계획</h1>
             <h2 className="addRepo" onClick={Show}>
               Repo 추가
             </h2>
+            {set && (
+              <>
+                <div className="add-modal-wrap">
+                  <input
+                    type="text"
+                    placeholder="dd"
+                    onChange={onChange}
+                    value={newRepo}
+                  ></input>
+                  <button type="submit" onClick={Add}>
+                    add
+                  </button>
+                </div>
+              </>
+            )}
             <section className="second">
               <section className="source">
                 <GitHubCalendar
@@ -84,21 +100,6 @@ const Layout = () => {
                     {sing}
                   </section>
                 ))}
-                {set && (
-                  <>
-                    <div>
-                      <input
-                        type="text"
-                        placeholder="dd"
-                        onChange={onChange}
-                        value={newRepo}
-                      ></input>
-                      <button type="submit" onClick={Add}>
-                        add
-                      </button>
-                    </div>
-                  </>
-                )}
               </section>
             </section>
           </WidgetLayoutWide>
