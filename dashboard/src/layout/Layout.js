@@ -6,7 +6,6 @@ import {
   createContext,
 } from "react";
 import GitHubCalendar from "react-github-calendar";
-
 import User from "../pages/User";
 import {
   WidgetLayoutSmall,
@@ -33,20 +32,22 @@ const Layout = () => {
   const onChange = (e) => {
     setNewRepo(e.target.value);
   };
-
-  const Add = () => {
-    const newSing = (
-      //  <AddSingleTodo todoname={[todoname, ...newRepo]} key={sing.length} />
-      <AddSingleTodo todoname={newRepo} key={sing.length} />
-    );
+  {
+    /*  const Add = () => {
+    const newSing = <AddSingleTodo todoname={newRepo} key={sing.length} />;
     setSing([...sing, newSing]);
+    setNewRepo(""); // Clear input after adding todo
   };
+*/
+  }
 
-  const todoname = [];
+  const todoname = [".."];
   const todonamee = ["집에서 할 일", "취미"];
 
   const [set, setSet] = useState(false);
   const Show = () => setSet((sset) => !sset);
+
+  ///
 
   return (
     <>
@@ -95,11 +96,20 @@ const Layout = () => {
                   </section>
                 ))}*/}
 
-                {sing.map((sing, index) => (
-                  <section className="todo-wrap single" key={index}>
-                    {sing}
-                  </section>
-                ))}
+                <SingleTodo todoname={todoname} />
+
+                {sing.length > 0 ? (
+                  <>
+                    {" "}
+                    {sing.map((sing, index) => (
+                      <section className="todo-wrap single" key={index}>
+                        {sing}
+                      </section>
+                    ))}
+                  </>
+                ) : (
+                  ""
+                )}
               </section>
             </section>
           </WidgetLayoutWide>

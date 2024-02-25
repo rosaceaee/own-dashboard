@@ -1,4 +1,10 @@
-import React from "react";
+import {
+  useState,
+  useEffect,
+  useRef,
+  useLayoutEffect,
+  createContext,
+} from "react";
 import { TodoList } from "./TodoList";
 import { WidgetLayoutSmall } from "../layout/WidgetLayoutSmall";
 import { ReactComponent as Home } from "../img/Home.svg";
@@ -43,6 +49,49 @@ export const AddSingleTodo = ({ todoname }) => {
       {" "}
       <section className="inner">
         <TodoList todoname={todoname} />
+      </section>
+    </>
+  );
+};
+
+export const AddSingleTodo2 = () => {
+  const [sing, setSing] = useState([]);
+  const [newRepo, setNewRepo] = useState("");
+
+  const onChange = (e) => {
+    setNewRepo(e.target.value);
+  };
+
+  const Add = () => {
+    const newSing = (
+      //  <AddSingleTodo todoname={[todoname, ...newRepo]} key={sing.length} />
+      <AddSingleTodo todoname={[...newRepo]} key={sing.length} />
+    );
+    setSing([...sing, newSing]);
+  };
+
+  const todoname = [".."];
+  const todonamee = ["집에서 할 일", "취미"];
+
+  const [set, setSet] = useState(false);
+  const Show = () => setSet((sset) => !sset);
+  return (
+    <>
+      {" "}
+      <section className="inner">
+        <TodoList todoname={todoname} />{" "}
+        {sing.length > 0 ? (
+          <>
+            {" "}
+            {sing.map((sing, index) => (
+              <section className="todo-wrap single" key={index}>
+                {sing}
+              </section>
+            ))}
+          </>
+        ) : (
+          ""
+        )}
       </section>
     </>
   );

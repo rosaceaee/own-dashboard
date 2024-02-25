@@ -6,6 +6,7 @@ export const TodoList = ({ todoname }) => {
   const [addList, setAddList] = useState([]);
   const { todoData, setTodoData } = useTodoContext();
   const localStorageKey = `todoData-${todoname}`;
+  console.log(typeof localStorageKey);
 
   const onChange = (e) => {
     const ee = e.target.value;
@@ -28,15 +29,6 @@ export const TodoList = ({ todoname }) => {
     setList("");
   };
 
-  const onCheckedElement = (checked, item) => {
-    const storedData = JSON.parse(localStorage.getItem(localStorageKey)) || [];
-    const updatedData = storedData.filter((el) => el.task !== item.task);
-    localStorage.setItem(localStorageKey, JSON.stringify(updatedData));
-
-    // 화면에서 체크박스를 사라지게 하기 위해 상태 업데이트
-    setAddList((prevList) => prevList.filter((el) => el.task !== item.task));
-  };
-
   const onRemove = (item) => {
     const storedData = JSON.parse(localStorage.getItem(localStorageKey)) || [];
     const updatedData = storedData.filter((el) => el.task !== item.task);
@@ -55,19 +47,39 @@ export const TodoList = ({ todoname }) => {
   useEffect(() => {
     setTodoData(addList);
   }, [addList, setTodoData]);
+  useEffect(() => {
+    console.log("ㅇㅇㅇㅇㄹㅇㄹ" + addList);
+  }, [addList]);
+
+  //
+  useEffect(() => {
+    if (list.length > 0) {
+      localStorage.setItem(
+        JSON.parse(localStorage.getItem(localStorageKey)),
+        JSON.stringify(todoData)
+      );
+    }
+  }, [todoData, localStorageKey]);
+  const Add = () => {
+    const newTask = { task: newRepo, completed: false };
+    const updatedData = [...addList, newTask]; // 기존의 addList에 새로운 할 일을 추가하여 업데이트합니다.
+    localStorage.setItem(localStorageKey, JSON.stringify(updatedData)); // 업데이트된 데이터를 로컬 스토리지에 저장합니다.
+    setAddList(updatedData); // 업데이트된 데이터로 addList 상태를 업데이트합니다.
+    setNewRepo(""); // 할 일 입력 필드를 비웁니다.
+  };
 
   return (
     <>
       <ul className="todo-container">
         <li>
-          <label>{todoname}</label>
+          <label>{todoname}</label> <h2 onClick={Add}>더하기</h2>
         </li>
         {addList.map((item, index) => (
           <li key={index} className={item.completed ? "completed" : ""}>
             <input
               type="checkbox"
               id={`checkbox-${index}`}
-              onChange={(e) => onCheckedElement(e.target.checked, item)}
+              //   onChange={(e) => onCheckedElement(e.target.checked, item)}
               checked={item.completed}
             />
             <label htmlFor={`checkbox-${index}`} style={{ textAlign: "left" }}>
