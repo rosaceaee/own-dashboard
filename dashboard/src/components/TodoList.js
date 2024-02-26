@@ -33,7 +33,6 @@ export const TodoList = ({ todoname }) => {
     const storedData = JSON.parse(localStorage.getItem(localStorageKey)) || [];
     const updatedData = storedData.filter((el) => el.task !== item.task);
     localStorage.setItem(localStorageKey, JSON.stringify(updatedData));
-
     setAddList((prevList) => prevList.filter((el) => el.task !== item.task));
   };
 
@@ -48,7 +47,7 @@ export const TodoList = ({ todoname }) => {
     setTodoData(addList);
   }, [addList, setTodoData]);
   useEffect(() => {
-    console.log("ㅇㅇㅇㅇㄹㅇㄹ" + addList);
+    console.log("addList check =>" + addList);
   }, [addList]);
 
   //
@@ -60,19 +59,12 @@ export const TodoList = ({ todoname }) => {
       );
     }
   }, [todoData, localStorageKey]);
-  const Add = () => {
-    const newTask = { task: newRepo, completed: false };
-    const updatedData = [...addList, newTask]; // 기존의 addList에 새로운 할 일을 추가하여 업데이트합니다.
-    localStorage.setItem(localStorageKey, JSON.stringify(updatedData)); // 업데이트된 데이터를 로컬 스토리지에 저장합니다.
-    setAddList(updatedData); // 업데이트된 데이터로 addList 상태를 업데이트합니다.
-    setNewRepo(""); // 할 일 입력 필드를 비웁니다.
-  };
 
   return (
     <>
       <ul className="todo-container">
         <li>
-          <label>{todoname}</label> <h2 onClick={Add}>더하기</h2>
+          <label>{todoname}</label>
         </li>
         {addList.map((item, index) => (
           <li key={index} className={item.completed ? "completed" : ""}>

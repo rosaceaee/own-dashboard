@@ -32,14 +32,12 @@ const Layout = () => {
   const onChange = (e) => {
     setNewRepo(e.target.value);
   };
-  {
-    /*  const Add = () => {
+
+  const Add = () => {
     const newSing = <AddSingleTodo todoname={newRepo} key={sing.length} />;
     setSing([...sing, newSing]);
-    setNewRepo(""); // Clear input after adding todo
+    setNewRepo("");
   };
-*/
-  }
 
   const todoname = [".."];
   const todonamee = ["집에서 할 일", "취미"];
