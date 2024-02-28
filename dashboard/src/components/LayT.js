@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import TodoContainer from "./TodoContainer"; // TodoContainer import
+import TodoContainer from "./TodoContainer";
 
 const LayT = () => {
-  const [todoContainers, setTodoContainers] = useState([]); // 상태 정의
+  const [todoContainers, setTodoContainers] = useState([]);
   const [modal, setModal] = useState(false);
   const [containerName, setContainerName] = useState("");
 
@@ -39,7 +39,7 @@ const LayT = () => {
     <>
       <div>
         <h1>Todo List</h1>
-        <button onClick={handleAddTodoContainer}>Add Todo Container</button>
+        <button onClick={handleAddTodoContainer}>레포 추가</button>
         {modal && (
           <>
             <div>
@@ -47,7 +47,7 @@ const LayT = () => {
                 type="text"
                 value={containerName}
                 onChange={handleInputChange}
-                placeholder="Enter Todo Container name..."
+                placeholder="이름 추가 입력"
               />
               <button onClick={handleAddContainerConfirm}>Add</button>
             </div>

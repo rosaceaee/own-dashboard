@@ -1,4 +1,3 @@
-// src/components/TodoContainer.js
 import React, { useState, useEffect } from "react";
 
 const TodoContainer = ({ container }) => {
@@ -23,7 +22,7 @@ const TodoContainer = ({ container }) => {
     if (inputText.trim() !== "") {
       const updatedList = [...todos, inputText];
       setTodos(updatedList);
-      const localStorageKey = `todoData-${id}`;
+      const localStorageKey = `${id}`;
       localStorage.setItem(localStorageKey, JSON.stringify(updatedList));
       setInputText("");
     }
@@ -39,7 +38,7 @@ const TodoContainer = ({ container }) => {
             type="text"
             value={inputText}
             onChange={handleInputChange}
-            placeholder="Add new todo..."
+            placeholder="추가"
           />
           <button onClick={handleAddTodo}>Add</button>
         </div>
