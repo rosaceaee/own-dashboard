@@ -1,16 +1,25 @@
-import { useTodoContext } from "./TodoContext";
+{
+  /* import { useTodoContext } from "./TodoContext-old";
 import { useEffect, useState } from "react";
 
 export const TodoList = ({ todoname }) => {
+  const { todoData, setTodoData } = useTodoContext();
   const [list, setList] = useState("");
   const [addList, setAddList] = useState([]);
-  const { todoData, setTodoData } = useTodoContext();
+
   const localStorageKey = `todoData-${todoname}`;
-  console.log(typeof localStorageKey);
+
+  useEffect(() => {
+    const storedData = JSON.parse(localStorage.getItem(localStorageKey));
+    if (storedData) {
+      setAddList(storedData);
+      setTodoData(storedData);
+    }
+  }, [localStorageKey, setTodoData]);
 
   const onChange = (e) => {
-    const ee = e.target.value;
-    setList(ee);
+    const value = e.target.value;
+    setList(value);
   };
 
   const onSubmit = (e) => {
@@ -20,45 +29,20 @@ export const TodoList = ({ todoname }) => {
     }
 
     const newTask = { task: list, completed: false };
-    const storedData = JSON.parse(localStorage.getItem(localStorageKey)) || [];
-    console.log(localStorageKey);
-    const updatedData = [...storedData, newTask];
+    const updatedData = [...addList, newTask];
 
     localStorage.setItem(localStorageKey, JSON.stringify(updatedData));
     setAddList(updatedData);
+    setTodoData(updatedData);
     setList("");
   };
 
   const onRemove = (item) => {
-    const storedData = JSON.parse(localStorage.getItem(localStorageKey)) || [];
-    const updatedData = storedData.filter((el) => el.task !== item.task);
+    const updatedData = addList.filter((el) => el.task !== item.task);
     localStorage.setItem(localStorageKey, JSON.stringify(updatedData));
-    setAddList((prevList) => prevList.filter((el) => el.task !== item.task));
+    setAddList(updatedData);
+    setTodoData(updatedData);
   };
-
-  useEffect(() => {
-    const storedData = JSON.parse(localStorage.getItem(localStorageKey));
-    if (storedData) {
-      setAddList(storedData);
-    }
-  }, [localStorageKey]);
-
-  useEffect(() => {
-    setTodoData(addList);
-  }, [addList, setTodoData]);
-  useEffect(() => {
-    console.log("addList check =>" + addList);
-  }, [addList]);
-
-  //
-  useEffect(() => {
-    if (list.length > 0) {
-      localStorage.setItem(
-        JSON.parse(localStorage.getItem(localStorageKey)),
-        JSON.stringify(todoData)
-      );
-    }
-  }, [todoData, localStorageKey]);
 
   return (
     <>
@@ -71,19 +55,23 @@ export const TodoList = ({ todoname }) => {
             <input
               type="checkbox"
               id={`checkbox-${index}`}
-              //   onChange={(e) => onCheckedElement(e.target.checked, item)}
               checked={item.completed}
+              onChange={() => {
+                const updatedData = addList.map((el, idx) =>
+                  idx === index ? { ...el, completed: !el.completed } : el
+                );
+                localStorage.setItem(
+                  localStorageKey,
+                  JSON.stringify(updatedData)
+                );
+                setAddList(updatedData);
+                setTodoData(updatedData);
+              }}
             />
             <label htmlFor={`checkbox-${index}`} style={{ textAlign: "left" }}>
               {item.task}
             </label>
-            <button
-              onClick={() => {
-                onRemove(item);
-              }}
-            >
-              완료
-            </button>
+            <button onClick={() => onRemove(item)}>완료</button>
           </li>
         ))}
       </ul>
@@ -99,3 +87,6 @@ export const TodoList = ({ todoname }) => {
     </>
   );
 };
+
+*/
+}

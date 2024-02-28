@@ -15,7 +15,7 @@ import {
 import Weather from "../pages/Weather";
 import { MultiTodo, SingleTodo, AddSingleTodo } from "../components/TodoLayout";
 import { TodoContainer } from "../components/TodoContext";
-import { TodoList } from "../components/TodoList";
+import { useTodoContext } from "../components/TodoContext";
 
 const Layout = () => {
   let test = [
