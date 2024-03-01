@@ -1,4 +1,9 @@
 import React, { useState, useEffect } from "react";
+import GitHubCalendar from "react-github-calendar";
+
+import User from "../pages/User";
+import { MultiTodo } from "./TodoLayout";
+import { WidgetLayoutWide } from "../layout/WidgetLayoutSmall";
 import TodoContainer from "./TodoContainer";
 
 const LayT = () => {
@@ -23,41 +28,69 @@ const LayT = () => {
 
   const handleAddContainerConfirm = () => {
     if (containerName.trim() !== "") {
-      const newContainerId = containerName; // Unique ID for each container
+      const newContainerId = containerName;
       const newContainers = [
         ...todoContainers,
         { id: newContainerId, name: containerName },
       ];
       setTodoContainers(newContainers);
-      localStorage.setItem("todoContainers", JSON.stringify(newContainers)); // Save to localStorage
+      localStorage.setItem("todoContainers", JSON.stringify(newContainers));
       setModal(false);
       setContainerName("");
     }
   };
-
+  let test = [
+    {
+      a: "aaaaaa",
+      b: "bbbbb",
+    },
+  ];
+  const user = [...test];
   return (
     <>
-      <div>
-        <h1>Todo List</h1>
-        <button onClick={handleAddTodoContainer}>레포 추가</button>
-        {modal && (
-          <>
-            <div>
-              <input
-                type="text"
-                value={containerName}
-                onChange={handleInputChange}
-                placeholder="이름 추가 입력"
+      <section className="container">
+        <WidgetLayoutWide>
+          <div className="first">
+            <User user={user} />
+          </div>
+        </WidgetLayoutWide>
+        <WidgetLayoutWide style={{ position: "relative" }}>
+          <section className="second">
+            <section className="source">
+              <GitHubCalendar
+                username="rosaceaee"
+                year="2024"
+                colorScheme="light"
               />
-              <button onClick={handleAddContainerConfirm}>Add</button>
-            </div>
-          </>
-        )}
-      </div>
-      <hr />
-      {todoContainers.map((container) => (
-        <TodoContainer key={container.id} container={container} />
-      ))}
+            </section>
+          </section>
+          <h1 className="repo-header">작업 계획</h1>{" "}
+          <div>
+            {" "}
+            {modal && (
+              <>
+                <div className="add-modal-wrap">
+                  <input
+                    type="text"
+                    value={containerName}
+                    onChange={handleInputChange}
+                    placeholder="이름 추가 입력"
+                  />
+                  <button onClick={handleAddContainerConfirm}>Add</button>
+                </div>
+              </>
+            )}
+            <button className="addRepo" onClick={handleAddTodoContainer}>
+              레포 추가
+            </button>
+          </div>
+          <div className="todo-wrap">
+            {todoContainers.map((container) => (
+              <TodoContainer key={container.id} container={container} />
+            ))}
+          </div>
+        </WidgetLayoutWide>
+      </section>
     </>
   );
 };

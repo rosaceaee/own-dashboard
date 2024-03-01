@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 
 const TodoContainer = ({ container }) => {
   const { id, name } = container;
 
   const [todos, setTodos] = useState([]);
   const [inputText, setInputText] = useState("");
-
+  const [throu, Setthrou] = useState(false);
   useEffect(() => {
     const localStorageKey = `${id}`;
     const storedData = JSON.parse(localStorage.getItem(localStorageKey));
@@ -47,11 +47,24 @@ const TodoContainer = ({ container }) => {
     localStorage.setItem(localStorageKey, JSON.stringify(updatedData));
   };
 
+  // const cc = Setthrou(asdf => !asdf);
+  const toggleChecked = useCallback(() => {
+    Setthrou((prevThrou) => !prevThrou);
+  }, []);
+
+  const classs = throu ? "list-chked" : "";
+
   return (
     <>
-      <hr />
-      <div>
-        <h2>{name}</h2>
+      <div className="todo-container">
+        <h2 className="repo-header">{name}</h2>
+        <ul>
+          {todos.map((todo, index) => (
+            <li key={index} className={classs} onClick={toggleChecked}>
+              {todo} <p onClick={remove}>remove</p>
+            </li>
+          ))}
+        </ul>
         <div>
           <input
             type="text"
@@ -61,13 +74,6 @@ const TodoContainer = ({ container }) => {
           />
           <button onClick={handleAddTodo}>Add</button>
         </div>
-        <ul>
-          {todos.map((todo, index) => (
-            <li key={index}>
-              {todo} <p onClick={remove}>remove</p>
-            </li>
-          ))}
-        </ul>
       </div>
     </>
   );
