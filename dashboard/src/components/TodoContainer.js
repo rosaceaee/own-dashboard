@@ -17,18 +17,6 @@ const TodoContainer = ({ container }) => {
   const handleInputChange = (e) => {
     setInputText(e.target.value);
   };
-  {
-    /*
-  const handleAddTodo = () => {
-    if (inputText.trim() !== "") {
-      const updatedList = [...todos, inputText];
-      setTodos(updatedList);
-      const localStorageKey = `${id}`;
-      localStorage.setItem(localStorageKey, JSON.stringify(setTodos(updatedList)));
-      setInputText("");
-    }
-  };*/
-  }
 
   const handleAddTodo = () => {
     if (inputText.trim() !== "") {
@@ -36,7 +24,7 @@ const TodoContainer = ({ container }) => {
       setTodos(updatedList);
 
       // 로컬 스토리지에 저장된 기존 데이터를 불러와서 업데이트된 리스트를 추가
-      const localStorageKey = `todoData-${id}`;
+      const localStorageKey = `${id}`;
       const storedData =
         JSON.parse(localStorage.getItem(localStorageKey)) || [];
       const updatedData = [...storedData, inputText];
@@ -51,6 +39,7 @@ const TodoContainer = ({ container }) => {
     updatedList.splice(i, 1);
     setTodos(updatedList);
 
+    // 로컬 스토리지에 저장된 기존 데이터를 불러와서 업데이트된 리스트를 추가
     const localStorageKey = `${id}`;
     const storedData = JSON.parse(localStorage.getItem(localStorageKey)) || [];
     const updatedData = [...storedData];
