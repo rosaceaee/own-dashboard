@@ -76,7 +76,7 @@ const LayT = () => {
                     onChange={handleInputChange}
                     placeholder="이름 추가 입력"
                   />
-                  <button onClick={handleAddContainerConfirm}>Add</button>
+                  <button onClick={handleAddContainerConfirm}>추가</button>
                 </div>
               </>
             )}

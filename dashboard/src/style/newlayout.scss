@@ -97,11 +97,12 @@
       display: flex;
       flex-direction: column;
       margin-top: 3rem;
+      overflow: auto;
+
       .source {
         display: flex;
         justify-content: center;
         margin: 4rem auto 2rem;
-        overflow: auto;
         width: 100%;
       }
 
@@ -252,7 +253,7 @@
       }
     }
   }
-  form {
+  div.inputwrap {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -426,6 +427,37 @@
     ul {
       li {
         width: 100%;
+      }
+    }
+
+    &.wide {
+      .add-modal-wrap {
+        width: 100%;
+      }
+
+      .wrap {
+        &.arr {
+          h2.repo-header {
+            padding: 1rem 0;
+          }
+          .todo-wrap {
+            padding: 0 1rem;
+            .todo-container {
+              width: 100%;
+
+              ul {
+                li {
+                  font-size: 1.2rem;
+                }
+              }
+            }
+          }
+
+          div.inputwrap button {
+            width: 100%;
+            max-width: 7rem;
+          }
+        }
       }
     }
   }

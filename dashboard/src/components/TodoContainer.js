@@ -47,10 +47,12 @@ const TodoContainer = ({ container }) => {
     localStorage.setItem(localStorageKey, JSON.stringify(updatedData));
   };
 
-  // const cc = Setthrou(asdf => !asdf);
-  const toggleChecked = useCallback(() => {
+  // 다 했으니까 모두 체크!
+  const toggleChecked = useCallback((e) => {
     Setthrou((prevThrou) => !prevThrou);
   }, []);
+
+  const eachChk = (chk) => {};
 
   const classs = throu ? "list-chked" : "";
 
@@ -65,14 +67,14 @@ const TodoContainer = ({ container }) => {
             </li>
           ))}
         </ul>
-        <div>
+        <div className="inputwrap">
           <input
             type="text"
             value={inputText}
             onChange={handleInputChange}
             placeholder="추가"
           />
-          <button onClick={handleAddTodo}>Add</button>
+          <button onClick={handleAddTodo}>등록</button>
         </div>
       </div>
     </>
