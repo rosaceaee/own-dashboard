@@ -47,7 +47,14 @@ const TodoContainer = ({ container }) => {
     localStorage.setItem(localStorageKey, JSON.stringify(updatedData));
   };
 
+  // 다 했으니까 모두 체크!
+  const toggleChecked = useCallback((e) => {
+    Setthrou((prevThrou) => !prevThrou);
+  }, []);
+
   const eachChk = (chk) => {};
+
+  const classs = throu ? "list-chked" : "";
 
   return (
     <>
@@ -57,7 +64,7 @@ const TodoContainer = ({ container }) => {
           {todos.map((todo, index) => (
             <li key={index}>
               <span>{todo}</span>
-              <p onClick={() => remove(index)}>remove</p>{" "}
+              <p onClick={() => remove(index)}>remove</p>
             </li>
           ))}
         </ul>
