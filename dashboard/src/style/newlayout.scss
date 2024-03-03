@@ -1,3 +1,11 @@
+.list-chked {
+  text-decoration: line-through;
+  border: 1px solid;
+}
+
+.ddd {
+  color: red;
+}
 .container {
   width: 100%;
   max-width: 192rem;
@@ -6,12 +14,6 @@
   min-height: 100%;
   .wrap.arr {
     position: relative;
-  }
-  .repo-header {
-    font-size: 3rem;
-    width: 100%;
-    text-align: center;
-    padding-top: 2rem;
   }
 
   .addRepo {
@@ -91,10 +93,6 @@
     .first {
       display: grid;
       grid-template-columns: 1fr 2fr;
-
-      .single-box {
-      }
-
       .weather {
         width: 40%;
       }
@@ -104,11 +102,12 @@
       display: flex;
       flex-direction: column;
       margin-top: 3rem;
+      overflow: auto;
+
       .source {
         display: flex;
         justify-content: center;
         margin: 4rem auto 2rem;
-        overflow: auto;
         width: 100%;
       }
 
@@ -132,6 +131,37 @@
 
       input {
         width: 100%;
+      }
+    }
+
+    .wrap.arr {
+      border: 1px solid;
+      display: flex;
+      flex-wrap: wrap;
+
+      .todo-wrap {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 0 3rem;
+        flex-wrap: wrap;
+        width: 100%;
+        .todo-container {
+          width: 33%;
+          display: flex;
+          flex-wrap: wrap;
+          flex-direction: column;
+          border: 1px solid;
+        }
+      }
+
+      h2.repo-header {
+        font-size: 3rem;
+        width: 100%;
+        text-align: center;
+        padding-top: 2rem;
+        background: orange;
+        border: 1px solid #333;
       }
     }
   }
@@ -228,7 +258,7 @@
       }
     }
   }
-  form {
+  div.inputwrap {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -282,6 +312,8 @@
       }
     }
   }
+
+  //
 }
 
 @media all and (max-width: 768px) {
@@ -348,6 +380,24 @@
         padding: 1rem 1rem;
       }
     }
+
+    &.wide {
+      .todo-wrap {
+        display: block;
+        flex-direction: row;
+        justify-content: center;
+        padding: 0 3rem;
+        flex-wrap: wrap;
+        width: 100%;
+
+        .todo-container {
+          width: 33%;
+          display: flex;
+          flex-wrap: wrap;
+          flex-direction: column;
+        }
+      }
+    }
   }
 }
 
@@ -382,6 +432,37 @@
     ul {
       li {
         width: 100%;
+      }
+    }
+
+    &.wide {
+      .add-modal-wrap {
+        width: 100%;
+      }
+
+      .wrap {
+        &.arr {
+          h2.repo-header {
+            padding: 1rem 0;
+          }
+          .todo-wrap {
+            padding: 0 1rem;
+            .todo-container {
+              width: 100%;
+
+              ul {
+                li {
+                  font-size: 1.2rem;
+                }
+              }
+            }
+          }
+
+          div.inputwrap button {
+            width: 100%;
+            max-width: 7rem;
+          }
+        }
       }
     }
   }
