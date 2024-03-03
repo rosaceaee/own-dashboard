@@ -64,7 +64,9 @@ const TodoContainer = ({ container }) => {
           {todos.map((todo, index) => (
             <li key={index}>
               <span>{todo}</span>
-              <p onClick={() => remove(index)}>remove</p>
+              <p onClick={() => remove(index)} style={{ fontWeight: "bold" }}>
+                삭제
+              </p>
             </li>
           ))}
         </ul>

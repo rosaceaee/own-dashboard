@@ -65,7 +65,7 @@ const LayT = () => {
             </section>
           </section>
           <h1 className="repo-header">작업 계획</h1>{" "}
-          <div>
+          <div style={{ width: "100%" }}>
             {" "}
             {modal && (
               <>
