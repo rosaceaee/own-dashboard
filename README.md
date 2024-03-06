@@ -1,4 +1,4 @@
-# own-dashboard
+# own-dashboard(not completed)
 ---
 * 업무나 집안일 관련 간단한 플래너 페이지입니다. 
   localstorage의 흐름을 주로 확인, context API에 관련 된 부분을 건드리며 공부하고 있습니다.
